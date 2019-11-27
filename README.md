@@ -1,2 +1,2 @@
 # RokuSharp
-Remote control for my roku tv
+Remote control for my Roku TV
