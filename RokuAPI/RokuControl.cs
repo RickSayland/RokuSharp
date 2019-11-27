@@ -8,7 +8,6 @@ namespace RokuAPI
 
         public RokuControl(string IP_ADDRESS)
         {
-            //_client = new RestSharp.RestClient("http://192.168.1.13:8060");
             _client = new RestClient(IP_ADDRESS);
         }
         public void PressUp()

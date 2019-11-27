@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using RokuAPI;
+using System.Configuration;
 
 namespace RokuRemote
 {
     public partial class RokuRemote : Form
     {
-        private RokuAPI.RokuControl _r = new RokuAPI.RokuControl("http://192.168.1.13:8060");
+        private RokuAPI.RokuControl _r = new RokuAPI.RokuControl(ConfigurationManager.AppSettings["LocalIPAddress"]);
         public RokuRemote()
         {
             InitializeComponent();
