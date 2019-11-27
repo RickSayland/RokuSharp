@@ -79,5 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RokuAPI\RokuAPI.csproj">
+      <Project>{47ed71d4-eefb-402b-bdbe-00c305277ed8}</Project>
+      <Name>RokuAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
