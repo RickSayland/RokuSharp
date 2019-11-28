@@ -14,22 +14,17 @@ namespace RokuRemote
 {
     public partial class RokuRemote : Form
     {
-        private RokuAPI.RokuControl _r;
+        public readonly RokuAPI.RokuControl ROKU = new RokuAPI.RokuControl(ConfigurationManager.AppSettings["URI"]);
         public RokuRemote()
         {
             InitializeComponent();
-            //_r = new RokuAPI.RokuControl("192.168.1.13", "8060");
-            //_r = new RokuAPI.RokuControl("192.168.1.13", RokuAPI.Constants.Ports.Default);
-            _r = new RokuAPI.RokuControl("http://192.168.1.13:8060");
-            //_r = new RokuAPI.RokuControl(ConfigurationManager.AppSettings["URI"]);
             setApps();
         }
         private void setApps()
         {
             this.lbApps.DisplayMember = "value";
             this.lbApps.ValueMember = "id";
-            var apps = _r.GetListOfApps();
-            foreach (App a in apps)
+            foreach (App a in ROKU.Apps)
             {
                 this.lbApps.Items.Add(a);
             }
@@ -38,67 +33,67 @@ namespace RokuRemote
 
         private void btnUp_Click(object sender, EventArgs e)
         {
-            _r.PressUp();
+            ROKU.PressUp();
         }
 
         private void btnDown_Click(object sender, EventArgs e)
         {
-            _r.PressDown();
+            ROKU.PressDown();
         }
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
-            _r.PressLeft();
+            ROKU.PressLeft();
         }
 
         private void btnRight_Click(object sender, EventArgs e)
         {
-            _r.PressRight();
+            ROKU.PressRight();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            _r.PressBack();
+            ROKU.PressBack();
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            _r.PressHome();
+            ROKU.PressHome();
         }
 
         private void btnVolumeUp_Click(object sender, EventArgs e)
         {
-            _r.PressVolumeUp();
+            ROKU.PressVolumeUp();
         }
 
         private void btnVolumeDown_Click(object sender, EventArgs e)
         {
-            _r.PressVolumeDown();
+            ROKU.PressVolumeDown();
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            _r.PressSelect();
+            ROKU.PressSelect();
         }
 
         private void btnLaunchApp_Click(object sender, EventArgs e)
         {
-            if (this.lbApps.SelectedItem != null) _r.LaunchApp((this.lbApps.SelectedItem as RokuAPI.App).Id);
+            if (this.lbApps.SelectedItem != null) ROKU.LaunchApp((this.lbApps.SelectedItem as RokuAPI.App).Id);
         }
 
         private void btnRewind_Click(object sender, EventArgs e)
         {
-            _r.PressRev();
+            ROKU.PressRev();
         }
 
         private void btnFastForward_Click(object sender, EventArgs e)
         {
-            _r.PressFwd();
+            ROKU.PressFwd();
         }
 
         private void btnPlayPause_Click(object sender, EventArgs e)
         {
-            _r.PressPlay();
+            ROKU.PressPlay();
         }
     }
 }
