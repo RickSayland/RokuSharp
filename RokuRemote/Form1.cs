@@ -80,7 +80,7 @@ namespace RokuRemote
 
         private void btnLaunchApp_Click(object sender, EventArgs e)
         {
-            _r.LaunchApp((this.lbApps.SelectedItem as RokuAPI.App).Id);
+            if (this.lbApps.SelectedItem != null) _r.LaunchApp((this.lbApps.SelectedItem as RokuAPI.App).Id);
         }
 
         private void btnRewind_Click(object sender, EventArgs e)
