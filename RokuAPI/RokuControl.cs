@@ -200,13 +200,6 @@ namespace RokuAPI
         [XmlAttribute(AttributeName = "subtype")]
         public string Subtype { get; set; }
     }
-
-    [XmlRoot(ElementName = "apps")]
-    public class Apps
-    {
-        [XmlElement(ElementName = "app")]
-        public List<App> App { get; set; }
-    }
     [XmlRoot(ElementName = "device-info")]
     public class Deviceinfo
     {
