@@ -28,131 +28,153 @@ namespace RokuAPI
         }
         public void PressBack()
         {
-            this.PressButton(Constants.Buttons.Back);
+            this.TryPressButton(Constants.Buttons.Back);
         }
         public void PressBackspace()
         {
-            this.PressButton(Constants.Buttons.Backspace);
+            this.TryPressButton(Constants.Buttons.Backspace);
         }
         public void PressChannelDown()
         {
-            this.PressButton(Constants.Buttons.ChannelDown);
+            this.TryPressButton(Constants.Buttons.ChannelDown);
         }
         public void PressChannelUp()
         {
-            this.PressButton(Constants.Buttons.ChannelUp);
+            this.TryPressButton(Constants.Buttons.ChannelUp);
         }
         public void PressDown()
         {
-            this.PressButton(Constants.Buttons.Down);
+            this.TryPressButton(Constants.Buttons.Down);
         }
         public void PressEnter()
         {
-            this.PressButton(Constants.Buttons.Enter);
+            this.TryPressButton(Constants.Buttons.Enter);
         }
         public void PressFindRemote()
         {
-            this.PressButton(Constants.Buttons.FindRemote);
+            this.TryPressButton(Constants.Buttons.FindRemote);
         }
         public void PressFwd()
         {
-            this.PressButton(Constants.Buttons.Fwd);
+            this.TryPressButton(Constants.Buttons.Fwd);
         }
         public void PressHome()
         {
-            this.PressButton(Constants.Buttons.Home);
+            this.TryPressButton(Constants.Buttons.Home);
         }
         public void PressInfo()
         {
-            this.PressButton(Constants.Buttons.Info);
+            this.TryPressButton(Constants.Buttons.Info);
         }
         public void PressInputAV1()
         {
-            this.PressButton(Constants.Buttons.InputAV1);
+            this.TryPressButton(Constants.Buttons.InputAV1);
         }
         public void PressInputHDMI1()
         {
-            this.PressButton(Constants.Buttons.InputHDMI1);
+            this.TryPressButton(Constants.Buttons.InputHDMI1);
         }
         public void PressInputHDMI2()
         {
-            this.PressButton(Constants.Buttons.InputHDMI2);
+            this.TryPressButton(Constants.Buttons.InputHDMI2);
         }
         public void PressInputHDMI3()
         {
-            this.PressButton(Constants.Buttons.InputHDMI3);
+            this.TryPressButton(Constants.Buttons.InputHDMI3);
         }
         public void PressInputHDMI4()
         {
-            this.PressButton(Constants.Buttons.InputHDMI4);
+            this.TryPressButton(Constants.Buttons.InputHDMI4);
         }
         public void PressInputTuner()
         {
-            this.PressButton(Constants.Buttons.InputTuner);
+            this.TryPressButton(Constants.Buttons.InputTuner);
         }
         public void PressInstantReplay()
         {
-            this.PressButton(Constants.Buttons.InstantReplay);
+            this.TryPressButton(Constants.Buttons.InstantReplay);
         }
         public void PressLeft()
         {
-            this.PressButton(Constants.Buttons.Left);
+            this.TryPressButton(Constants.Buttons.Left);
         }
         public void PressPlay()
         {
-            this.PressButton(Constants.Buttons.Play);
+            this.TryPressButton(Constants.Buttons.Play);
         }
         public void PressPowerOff()
         {
-            this.PressButton(Constants.Buttons.PowerOff);
+            this.TryPressButton(Constants.Buttons.PowerOff);
         }
         public void PressRev()
         {
-            this.PressButton(Constants.Buttons.Rev);
+            this.TryPressButton(Constants.Buttons.Rev);
         }
         public void PressRight()
         {
-            this.PressButton(Constants.Buttons.Right);
+            this.TryPressButton(Constants.Buttons.Right);
         }
         public void PressSearch()
         {
-            this.PressButton(Constants.Buttons.Search);
+            this.TryPressButton(Constants.Buttons.Search);
         }
         public void PressSelect()
         {
-            this.PressButton(Constants.Buttons.Select);
+            this.TryPressButton(Constants.Buttons.Select);
         }
         public void PressUp()
         {
-            this.PressButton(Constants.Buttons.Up);
+            this.TryPressButton(Constants.Buttons.Up);
         }
         public void PressVolumeDown()
         {
-            this.PressButton(Constants.Buttons.VolumeDown);
+            this.TryPressButton(Constants.Buttons.VolumeDown);
         }
         public void PressVolumeMute()
         {
-            this.PressButton(Constants.Buttons.VolumeMute);
+            this.TryPressButton(Constants.Buttons.VolumeMute);
         }
         public void PressVolumeUp()
         {
-            this.PressButton(Constants.Buttons.VolumeUp);
+            this.TryPressButton(Constants.Buttons.VolumeUp);
+        }
+        public void TryPressButton(string buttonName)
+        {
+            try
+            {
+                this.PressButton(buttonName);
+            }
+            catch
+            {
+                //OH NO
+            }
         }
         public void PressButton(string buttonName)
         {
-            _client.Execute(new RestRequest("keypress/"+ buttonName, Method.POST));
+            var response = _client.Execute(new RestRequest("keypress/"+ buttonName, Method.POST));
+            if (!response.IsSuccessful) throw new Exception("Cannot connect to Roku");
+        }
+        public void TryLaunchApp(string appId)
+        {
+            try
+            {
+                this.LaunchApp(appId);
+            }
+            catch
+            {
+                //OH NO
+            }
         }
         public void LaunchApp(string appId)
         {
-            _client.Execute(new RestRequest("launch/" + appId, Method.POST));
+            var response = _client.Execute(new RestRequest("launch/" + appId, Method.POST));
+            if (!response.IsSuccessful) throw new Exception("Cannot connect to Roku");
         }
         public List<App> GetListOfApps()
         {
-            List<App> appList;
-            var request = new RestRequest("query/apps", Method.GET,DataFormat.Xml);
-            appList = _client.Execute<List<App>>(request).Data;
-            if (appList == null) throw new Exception("Cannot connect to Roku");
-            return appList;
+            var response = _client.Execute<List<App>>(new RestRequest("query/apps", Method.GET, DataFormat.Xml));
+            if (!response.IsSuccessful) throw new Exception("Cannot connect to Roku");
+            return response.Data;
         }
     }
     [XmlRoot(ElementName = "app")]
