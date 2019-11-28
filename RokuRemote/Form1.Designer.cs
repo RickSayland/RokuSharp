@@ -166,7 +166,7 @@
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.btnBack);
             this.Name = "RokuRemote";
-            this.Text = "Form1";
+            this.Text = "RokuRemote";
             this.ResumeLayout(false);
 
         }

@@ -30,6 +30,7 @@ namespace RokuRemote
             {
                 this.lbApps.Items.Add(a);
             }
+            this.lbApps.Sorted = true;
         }
 
         private void btnUp_Click(object sender, EventArgs e)
