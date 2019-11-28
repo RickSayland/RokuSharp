@@ -14,10 +14,22 @@ namespace RokuRemote
 {
     public partial class RokuRemote : Form
     {
-        private RokuAPI.RokuControl _r = new RokuAPI.RokuControl(ConfigurationManager.AppSettings["LocalIPAddress"]);
+        private RokuAPI.RokuControl _r;
         public RokuRemote()
         {
             InitializeComponent();
+            _r = new RokuAPI.RokuControl(ConfigurationManager.AppSettings["LocalIPAddress"]);
+            setApps();
+        }
+        private void setApps()
+        {
+            this.lbApps.DisplayMember = "value";
+            this.lbApps.ValueMember = "id";
+            var apps = _r.GetListOfApps();
+            foreach (App a in apps)
+            {
+                this.lbApps.Items.Add(a);
+            }
         }
 
         private void btnUp_Click(object sender, EventArgs e)
@@ -27,7 +39,47 @@ namespace RokuRemote
 
         private void btnDown_Click(object sender, EventArgs e)
         {
-            _r.PressButton((sender as Button).Text);
+            _r.PressDown();
+        }
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            _r.PressLeft();
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            _r.PressRight();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            _r.PressBack();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            _r.PressHome();
+        }
+
+        private void btnVolumeUp_Click(object sender, EventArgs e)
+        {
+            _r.PressVolumeUp();
+        }
+
+        private void btnVolumeDown_Click(object sender, EventArgs e)
+        {
+            _r.PressVolumeDown();
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            _r.PressSelect();
+        }
+
+        private void btnLaunchApp_Click(object sender, EventArgs e)
+        {
+            _r.LaunchApp((this.lbApps.SelectedItem as RokuAPI.App).Id);
         }
     }
 }

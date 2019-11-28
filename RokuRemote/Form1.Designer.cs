@@ -36,6 +36,9 @@
             this.btnDown = new System.Windows.Forms.Button();
             this.btnVolumeUp = new System.Windows.Forms.Button();
             this.btnVolumeDown = new System.Windows.Forms.Button();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.lbApps = new System.Windows.Forms.ListBox();
+            this.btnLaunchApp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBack
@@ -46,6 +49,7 @@
             this.btnBack.TabIndex = 0;
             this.btnBack.Text = "<---";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnHome
             // 
@@ -55,24 +59,27 @@
             this.btnHome.TabIndex = 1;
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnLeft
             // 
-            this.btnLeft.Location = new System.Drawing.Point(12, 64);
+            this.btnLeft.Location = new System.Drawing.Point(12, 70);
             this.btnLeft.Name = "btnLeft";
-            this.btnLeft.Size = new System.Drawing.Size(75, 23);
+            this.btnLeft.Size = new System.Drawing.Size(44, 23);
             this.btnLeft.TabIndex = 2;
             this.btnLeft.Text = "<---";
             this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             // 
             // btnRight
             // 
-            this.btnRight.Location = new System.Drawing.Point(93, 64);
+            this.btnRight.Location = new System.Drawing.Point(112, 70);
             this.btnRight.Name = "btnRight";
-            this.btnRight.Size = new System.Drawing.Size(75, 23);
+            this.btnRight.Size = new System.Drawing.Size(44, 23);
             this.btnRight.TabIndex = 3;
             this.btnRight.Text = "--->";
             this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
             // btnUp
             // 
@@ -86,7 +93,7 @@
             // 
             // btnDown
             // 
-            this.btnDown.Location = new System.Drawing.Point(51, 93);
+            this.btnDown.Location = new System.Drawing.Point(51, 99);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(75, 23);
             this.btnDown.TabIndex = 5;
@@ -102,6 +109,7 @@
             this.btnVolumeUp.TabIndex = 6;
             this.btnVolumeUp.Text = "Volume Up";
             this.btnVolumeUp.UseVisualStyleBackColor = true;
+            this.btnVolumeUp.Click += new System.EventHandler(this.btnVolumeUp_Click);
             // 
             // btnVolumeDown
             // 
@@ -111,12 +119,44 @@
             this.btnVolumeDown.TabIndex = 7;
             this.btnVolumeDown.Text = "Volume Down";
             this.btnVolumeDown.UseVisualStyleBackColor = true;
+            this.btnVolumeDown.Click += new System.EventHandler(this.btnVolumeDown_Click);
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.Location = new System.Drawing.Point(62, 70);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(44, 23);
+            this.btnSelect.TabIndex = 8;
+            this.btnSelect.Text = "OK";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
+            // lbApps
+            // 
+            this.lbApps.FormattingEnabled = true;
+            this.lbApps.Location = new System.Drawing.Point(255, 12);
+            this.lbApps.Name = "lbApps";
+            this.lbApps.Size = new System.Drawing.Size(224, 212);
+            this.lbApps.TabIndex = 9;
+            // 
+            // btnLaunchApp
+            // 
+            this.btnLaunchApp.Location = new System.Drawing.Point(174, 177);
+            this.btnLaunchApp.Name = "btnLaunchApp";
+            this.btnLaunchApp.Size = new System.Drawing.Size(75, 52);
+            this.btnLaunchApp.TabIndex = 10;
+            this.btnLaunchApp.Text = "Launch App!";
+            this.btnLaunchApp.UseVisualStyleBackColor = true;
+            this.btnLaunchApp.Click += new System.EventHandler(this.btnLaunchApp_Click);
             // 
             // RokuRemote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(269, 146);
+            this.ClientSize = new System.Drawing.Size(491, 241);
+            this.Controls.Add(this.btnLaunchApp);
+            this.Controls.Add(this.lbApps);
+            this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.btnVolumeDown);
             this.Controls.Add(this.btnVolumeUp);
             this.Controls.Add(this.btnDown);
@@ -141,6 +181,9 @@
         private System.Windows.Forms.Button btnDown;
         private System.Windows.Forms.Button btnVolumeUp;
         private System.Windows.Forms.Button btnVolumeDown;
+        private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.ListBox lbApps;
+        private System.Windows.Forms.Button btnLaunchApp;
     }
 }
 
