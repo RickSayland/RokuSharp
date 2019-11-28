@@ -9,10 +9,12 @@ namespace RokuRemote
     {
         //public readonly RokuAPI.RokuControl ROKU = new RokuAPI.RokuControl(ConfigurationManager.AppSettings["URI"]);
         public readonly RokuAPI.RokuControl ROKU = new RokuAPI.RokuControl("192.168.1.13","8060");
+        public readonly Deviceinfo DEVICE_INFO;
         public RokuRemote()
         {
             InitializeComponent();
             setApps();
+            this.DEVICE_INFO = ROKU.GetDeviceInfo();
         }
         private void setApps()
         {
