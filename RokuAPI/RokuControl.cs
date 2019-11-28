@@ -8,9 +8,14 @@ namespace RokuAPI
     {
         private readonly RestSharp.RestClient _client;
 
-        public RokuControl(string IP_ADDRESS)
+        public RokuControl(string URI)
         {
-            _client = new RestClient(IP_ADDRESS);
+            _client = new RestClient(URI);
+        }
+        public RokuControl(string IP_ADDRESS, string PORT)
+        {
+            string URI = "http://" + IP_ADDRESS + ":" + PORT;
+            _client = new RestClient(URI);
         }
         public void PressBack()
         {

@@ -18,7 +18,7 @@ namespace RokuRemote
         public RokuRemote()
         {
             InitializeComponent();
-            _r = new RokuAPI.RokuControl(ConfigurationManager.AppSettings["LocalIPAddress"]);
+            _r = new RokuAPI.RokuControl(ConfigurationManager.AppSettings["URI"]);
             setApps();
         }
         private void setApps()
