@@ -7,7 +7,8 @@ namespace RokuRemote
 {
     public partial class RokuRemote : Form
     {
-        public readonly RokuAPI.RokuControl ROKU = new RokuAPI.RokuControl(ConfigurationManager.AppSettings["URI"]);
+        //public readonly RokuAPI.RokuControl ROKU = new RokuAPI.RokuControl(ConfigurationManager.AppSettings["URI"]);
+        public readonly RokuAPI.RokuControl ROKU = new RokuAPI.RokuControl("192.168.1.13","8060");
         public RokuRemote()
         {
             InitializeComponent();
