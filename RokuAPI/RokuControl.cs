@@ -138,11 +138,8 @@ namespace RokuAPI
             var request = new RestRequest("query/apps", Method.GET,DataFormat.Xml);
 
             var response = _client.Execute<List<App>>(request);
-            foreach (App a in response.Data)
-            {
-                appList.Add(a);
-            }
-            return appList;
+
+            return response.Data;
         }
     }
     [XmlRoot(ElementName = "app")]
