@@ -39,10 +39,9 @@
             this.btnSelect = new System.Windows.Forms.Button();
             this.lbApps = new System.Windows.Forms.ListBox();
             this.btnLaunchApp = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabControl1.SuspendLayout();
+            this.btnRewind = new System.Windows.Forms.Button();
+            this.btnPlayPause = new System.Windows.Forms.Button();
+            this.btnFastForward = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBack
@@ -138,14 +137,14 @@
             // lbApps
             // 
             this.lbApps.FormattingEnabled = true;
-            this.lbApps.Location = new System.Drawing.Point(17, 197);
+            this.lbApps.Location = new System.Drawing.Point(5, 259);
             this.lbApps.Name = "lbApps";
             this.lbApps.Size = new System.Drawing.Size(224, 251);
             this.lbApps.TabIndex = 9;
             // 
             // btnLaunchApp
             // 
-            this.btnLaunchApp.Location = new System.Drawing.Point(161, 171);
+            this.btnLaunchApp.Location = new System.Drawing.Point(149, 233);
             this.btnLaunchApp.Name = "btnLaunchApp";
             this.btnLaunchApp.Size = new System.Drawing.Size(80, 20);
             this.btnLaunchApp.TabIndex = 10;
@@ -153,42 +152,44 @@
             this.btnLaunchApp.UseVisualStyleBackColor = true;
             this.btnLaunchApp.Click += new System.EventHandler(this.btnLaunchApp_Click);
             // 
-            // tabControl1
+            // btnRewind
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(455, 141);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(200, 292);
-            this.tabControl1.TabIndex = 11;
+            this.btnRewind.Location = new System.Drawing.Point(11, 205);
+            this.btnRewind.Name = "btnRewind";
+            this.btnRewind.Size = new System.Drawing.Size(50, 20);
+            this.btnRewind.TabIndex = 11;
+            this.btnRewind.Text = "<|<|";
+            this.btnRewind.UseVisualStyleBackColor = true;
+            this.btnRewind.Click += new System.EventHandler(this.btnRewind_Click);
             // 
-            // tabPage1
+            // btnPlayPause
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(192, 266);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.btnPlayPause.Location = new System.Drawing.Point(67, 205);
+            this.btnPlayPause.Name = "btnPlayPause";
+            this.btnPlayPause.Size = new System.Drawing.Size(50, 20);
+            this.btnPlayPause.TabIndex = 12;
+            this.btnPlayPause.Text = "|> ||";
+            this.btnPlayPause.UseVisualStyleBackColor = true;
+            this.btnPlayPause.Click += new System.EventHandler(this.btnPlayPause_Click);
             // 
-            // tabPage2
+            // btnFastForward
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 74);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.btnFastForward.Location = new System.Drawing.Point(123, 205);
+            this.btnFastForward.Name = "btnFastForward";
+            this.btnFastForward.Size = new System.Drawing.Size(50, 20);
+            this.btnFastForward.TabIndex = 13;
+            this.btnFastForward.Text = "|>|>";
+            this.btnFastForward.UseVisualStyleBackColor = true;
+            this.btnFastForward.Click += new System.EventHandler(this.btnFastForward_Click);
             // 
             // RokuRemote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 491);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(242, 521);
+            this.Controls.Add(this.btnFastForward);
+            this.Controls.Add(this.btnPlayPause);
+            this.Controls.Add(this.btnRewind);
             this.Controls.Add(this.btnLaunchApp);
             this.Controls.Add(this.lbApps);
             this.Controls.Add(this.btnSelect);
@@ -202,7 +203,6 @@
             this.Controls.Add(this.btnBack);
             this.Name = "RokuRemote";
             this.Text = "RokuRemote";
-            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -220,9 +220,9 @@
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.ListBox lbApps;
         private System.Windows.Forms.Button btnLaunchApp;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btnRewind;
+        private System.Windows.Forms.Button btnPlayPause;
+        private System.Windows.Forms.Button btnFastForward;
     }
 }
 
