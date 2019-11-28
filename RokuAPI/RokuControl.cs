@@ -1,4 +1,5 @@
 ﻿using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
@@ -7,12 +8,19 @@ namespace RokuAPI
     public class RokuControl
     {
         private readonly RestSharp.RestClient _client;
-        public readonly List<App> Apps;
+        public readonly List<App> Apps = new List<App>();
 
         public RokuControl(string URI)
         {
             _client = new RestClient(URI);
-            this.Apps = this.GetListOfApps();
+            try
+            {
+                this.Apps = this.GetListOfApps();
+            }
+            catch (Exception ex)
+            {
+                this.Apps.Add(new App { Id = "0", Value = ex.Message });
+            }
         }
         public RokuControl(string IP_ADDRESS, string PORT) : this("http://" + IP_ADDRESS + ":" + PORT)
         {
@@ -140,12 +148,11 @@ namespace RokuAPI
         }
         public List<App> GetListOfApps()
         {
-            List<App> appList = new List<App>();
+            List<App> appList;
             var request = new RestRequest("query/apps", Method.GET,DataFormat.Xml);
-
-            var response = _client.Execute<List<App>>(request);
-
-            return response.Data;
+            appList = _client.Execute<List<App>>(request).Data;
+            if (appList == null) throw new Exception("Cannot connect to Roku");
+            return appList;
         }
     }
     [XmlRoot(ElementName = "app")]
