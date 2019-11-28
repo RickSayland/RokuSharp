@@ -41,9 +41,9 @@ namespace RokuAPI
             public const string InputHDMI4 = "InputHDMI4";
             public const string InputAV1 = "InputAV1";
         }
-        public static class Apps
+        public static class Ports
         {
-            public const string Funimation = "14654";
+            public const string Default = "8060";
         }
     }
 }
