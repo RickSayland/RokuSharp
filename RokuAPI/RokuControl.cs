@@ -14,11 +14,9 @@ namespace RokuAPI
             _client = new RestClient(URI);
             this.Apps = this.GetListOfApps();
         }
-        public RokuControl(string IP_ADDRESS, string PORT)
+        public RokuControl(string IP_ADDRESS, string PORT) : this("http://" + IP_ADDRESS + ":" + PORT)
         {
-            string URI = "http://" + IP_ADDRESS + ":" + PORT;
-            _client = new RestClient(URI);
-            this.Apps = this.GetListOfApps();
+
         }
         public void PressBack()
         {
