@@ -18,7 +18,10 @@ namespace RokuRemote
         public RokuRemote()
         {
             InitializeComponent();
-            _r = new RokuAPI.RokuControl(ConfigurationManager.AppSettings["URI"]);
+            //_r = new RokuAPI.RokuControl("192.168.1.13", "8060");
+            //_r = new RokuAPI.RokuControl("192.168.1.13", RokuAPI.Constants.Ports.Default);
+            _r = new RokuAPI.RokuControl("http://192.168.1.13:8060");
+            //_r = new RokuAPI.RokuControl(ConfigurationManager.AppSettings["URI"]);
             setApps();
         }
         private void setApps()
